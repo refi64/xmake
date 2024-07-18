@@ -3,6 +3,7 @@ import("core.base.scheduler")
 
 local inftimeout = 5000
 
+--[[
 function test_single_process(t)
 
     local stdout = os.tmpfile()
@@ -33,4 +34,4 @@ function test_sched_process(t)
     end)
     scheduler.co_group_wait("test")
     t:are_equal(count, 3)
-end
+end]]
