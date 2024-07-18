@@ -25,6 +25,7 @@ import("private.cache.build_cache")
 
 -- the builtin clean main entry
 function main(target)
+    print("clean 111")
 
     -- is phony?
     if target:is_phony() then
@@ -46,34 +47,43 @@ function main(target)
         end
     end
 
+    print("clean 111")
     -- remove the symbol file
     remove_files(target:symbolfile())
 
+    print("clean 111")
     -- remove the c/c++ precompiled header file
     remove_files(target:pcoutputfile("c"))
     remove_files(target:pcoutputfile("cxx"))
 
+    print("clean 111")
     -- remove the clean files
     remove_files(target:get("cleanfiles"))
 
     -- remove all?
     if option.get("all") then
 
+    print("clean 222")
         -- remove config files
         local _, configfiles = target:configfiles()
         remove_files(configfiles)
 
+    print("clean 222")
         -- remove all dependent files for each platform
         remove_files(target:dependir({root = true}))
 
+    print("clean 222")
         -- remove all object files for each platform
         remove_files(target:objectdir({root = true}))
 
+    print("clean 222")
         -- remove all autogen files for each platform
         remove_files(target:autogendir({root = true}))
 
+    print("clean 222")
         -- clean build cache
         build_cache.clean()
+    print("clean 222")
     else
 
         -- remove dependent files for the current platform

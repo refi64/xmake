@@ -491,6 +491,7 @@ function os.rm(filepath, opt)
     if type(filepathes) == "string" then
         local ok, errors = os._rm(filepathes)
         if not ok then
+            print(debug.traceback())
             return false, errors
         end
         if opt.emptydirs then
