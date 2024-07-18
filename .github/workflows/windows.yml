@@ -80,7 +80,7 @@ jobs:
           Set-Item -Path Env:Path -Value ($Env:XMAKE_PROGRAM_DIR + ";" + $Env:Path)
           xrepo --version
           xmake show
-          xmake lua -v -D tests/run.lua
+          xmake lua -v -D tests/run.lua class
 
         # upload artifacts
       - uses: actions/upload-artifact@v2
