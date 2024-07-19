@@ -175,6 +175,10 @@ function main()
     -- unlock the whole project
     project.unlock()
 
+    print(1, project.filelock(), os.isfile(project.filelock()))
+    os.rm(project.filelock())
+    print(2, project.filelock(), os.isfile(project.filelock()))
+
     -- we must call it after unlocking project because it will remove project lockfile
     _clean_configs()
 
