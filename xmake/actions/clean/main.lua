@@ -154,8 +154,10 @@ function main()
         return remote_build_action()
     end
 
+    print(0, project.filelock(), os.isfile(project.filelock()))
     -- lock the whole project
     project.lock()
+    print(1, project.filelock(), os.isfile(project.filelock()))
 
     -- get the target name
     local targetname = option.get("target")
@@ -175,9 +177,9 @@ function main()
     -- unlock the whole project
     project.unlock()
 
-    print(1, project.filelock(), os.isfile(project.filelock()))
-    os.rm(project.filelock())
     print(2, project.filelock(), os.isfile(project.filelock()))
+    os.rm(project.filelock())
+    print(3, project.filelock(), os.isfile(project.filelock()))
 
     -- we must call it after unlocking project because it will remove project lockfile
     _clean_configs()
